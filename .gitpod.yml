@@ -1,0 +1,7 @@
+tasks:
+  - init: npm install && ./gradlew build
+    command: npm run start
+
+vscode:
+  extensions:
+    - ritwickdey.liveserver@5.6.1:5Mhl1RgVVDcIym163x8r+w==

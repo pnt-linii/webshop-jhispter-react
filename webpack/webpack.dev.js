@@ -39,6 +39,7 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
   devServer: {
     stats: options.stats,
     hot: true,
+    disableHostCheck: true,
     contentBase: './build/resources/main/static/',
     proxy: [{
       context: [

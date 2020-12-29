@@ -1,6 +1,6 @@
 application {
   config {
-    baseName store
+    baseName webshop
     packageName com.adyen.demo.store
     authenticationType jwt
     prodDatabaseType mysql
@@ -49,19 +49,28 @@ entity ShoppingCart {
     status OrderStatus required
     totalPrice BigDecimal required min(0)
     paymentMethod PaymentMethod required
+    deliveryType DeliveryType required
 }
 
 enum OrderStatus {
-    COMPLETED, PAID, PENDING, CANCELLED
+    COMPLETED, PAID, PENDING, CANCELLED, IN_PROCESS, SHIPPED, DELIVERED, RETURN_INITIATED, RETURNED, REFUNDED
 }
 
 enum PaymentMethod {
     CREDIT_CARD, PAYPAL, BANK_TRANSFER, CASH
 }
 
+enum DeliveryType {
+    UPS, DHL
+}
+
 entity ProductOrder {
     quantity Integer required min(0)
     totalPrice BigDecimal required min(0)
+}
+
+entity Delivery {
+    deliveryType DeliveryType required
 }
 
 relationship OneToOne {
